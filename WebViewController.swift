@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  DemoWebview
 //
-//  Created by Zaid Ahmed IoS on 28/05/2021.
+//  Created by ShuftiPro on 28/05/2021.
 //
 
 import UIKit
@@ -25,7 +25,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         self.activity.startAnimating()
         self.activity.hidesWhenStopped = true
         camPermission()
-        loadWebSiteView(url: "enter-your-url")
+        loadWebSiteView(url: "enter-your-url")// Pass url here 
 
 
 
@@ -140,6 +140,13 @@ extension ViewController {
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         activity.stopAnimating()
+    }
+
+        @available(iOS 15.0, *)
+    func webView(_ webView: WKWebView, decideMediaCapturePermissionsFor origin: WKSecurityOrigin,
+                 initiatedBy frame: WKFrameInfo,
+                 type: WKMediaCaptureType) async -> WKPermissionDecision {
+        return .grant;
     }
 
     
